@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Player</title>
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <p id="text"></p>
+    <div id="player"></div>
+
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.slim.js"
+  integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="
+  crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        width: 600,
+        height: 400,
+        videoId: 'zb3Qk8SG5Ms',
+        playerVars: {
+            color: 'white',
+            playlist: 'YPL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU'
+        },
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+// https://www.youtube.com/playlist?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU
+// https://youtu.be/zb3Qk8SG5Ms
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+</script>
+<script>
+    var playing = true
+    const socket = io('http://localhost:3000');
+  
+    socket.on('gesture',  (gesture) => {
+        document.getElementById('text').innerHTML = gesture
+        if(gesture === 'Pause') {
+            console.log(playing)
+            if(playing)  {
+                console.log('Paused')
+                player.pauseVideo()
+                playing = !playing
+            } else {
+                console.log('play')
+                player.playVideo()
+                playing = !playing
+            }
+        } else if(gesture === 'Next')  {
+            console.log(player)
+            player.nextVideo()
+        } else if(gesture === 'Previous') {
+            player.previousVideo()
+        }
+    })
+  </script>
+</html>
