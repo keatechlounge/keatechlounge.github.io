@@ -6,6 +6,7 @@ var Leap = require('leapjs');
 var controller = Leap.loop({frameEventName:'deviceFrame', enableGestures:true});
 
 const rootPath = path.dirname(require.main.filename)
+console.log(rootPath)
 
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
