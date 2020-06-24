@@ -55,6 +55,7 @@ function onPlayerReady(event) {
     const socket = io('http://localhost:3000');
   
     socket.on('gesture',  (gesture) => {
+        console.log(gesture)
         document.getElementById('text').innerHTML = gesture
         if(gesture === 'Pause') {
             console.log(playing)

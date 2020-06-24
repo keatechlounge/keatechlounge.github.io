@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://github.com/keatechlounge.github.io/leap-motion-demo",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "node ghpages.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "gh-pages": "^3.1.0",
     "leapjs": "^0.6.4",
     "slideshow": "^1.0.4",
     "socket.io": "^2.3.0"
