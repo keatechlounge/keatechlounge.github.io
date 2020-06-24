@@ -62,10 +62,10 @@ io.on('connection', socket => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(rootPath + '/leap-motion-demo/index.html')
+    res.sendFile(rootPath + '/index.html')
 })
 app.get('/style.css', (req, res) => {
-    res.sendFile(rootPath + '/leap-motion-demo/style.css')
+    res.sendFile(rootPath + '/style.css')
 })
 
 
