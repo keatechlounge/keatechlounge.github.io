@@ -63,6 +63,9 @@ io.on('connection', socket => {
 app.get('/', (req, res) => {
     res.sendFile(rootPath + '/index.html')
 })
+app.get('/style.css', (req, res) => {
+    res.sendFile(rootPath + '/style.css')
+})
 
 
 server.listen(3000, () => console.log('server running'))
