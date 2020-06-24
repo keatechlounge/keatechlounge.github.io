@@ -6,7 +6,7 @@ var Leap = require('leapjs');
 var controller = Leap.loop({frameEventName:'deviceFrame', enableGestures:true});
 
 const rootPath = path.dirname(require.main.filename)
-console.log(rootPath)
+// console.log(rootPath)
 
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
@@ -62,10 +62,10 @@ io.on('connection', socket => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(rootPath + '/index.html')
+    res.sendFile(rootPath + '/leap-motion-demo/index.html')
 })
 app.get('/style.css', (req, res) => {
-    res.sendFile(rootPath + '/style.css')
+    res.sendFile(rootPath + '/leap-motion-demo/style.css')
 })
 
 
